@@ -11,7 +11,7 @@ class QueryRequest(BaseModel):
     message: str
 
 # Langflow API configuration
-BASE_API_URL = "http://127.0.0.1:7860"  # Change if Langflow is hosted elsewhere
+BASE_API_URL = "http://127.0.0.1:7860"  # Update this to the actual Langflow host URL if different
 FLOW_ID = "4d4f646f-7a75-4f65-9e76-fcd916354f1e"  # Replace with your actual Flow ID
 ENDPOINT = FLOW_ID  # Use this if you have a custom endpoint
 
@@ -58,5 +58,6 @@ async def query_langflow(request: QueryRequest):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8000)  # Ensure it listens on all interfaces (important for Azure)
+
 
